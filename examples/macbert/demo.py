@@ -13,14 +13,9 @@ from pycorrector import MacBertCorrector
 def main():
     m = MacBertCorrector()
     error_sentences = [
-        '今天新情很好',
-        '你找到你最喜欢的工作，我也很高心。',
-        '老是较书。',
-        '感谢等五分以后，碰到一位很棒的奴生跟我可聊。',
-        '遇到一位很棒的奴生跟我聊天。',
-        '遇到一位很美的女生跟我疗天。',
-        '他们只能有两个选择：接受降新或自动离职。',
-        '王天华开心得一直说话。'
+        "里面藏了在他当时看来好多好多的钱和几个装着人参的玉盒",
+        "感到蜜穴里的跳蛋不在跳动",
+        "客官，妾身表演给你看好么"
     ]
     batch_res = m.correct_batch(error_sentences)
     for i in batch_res:
