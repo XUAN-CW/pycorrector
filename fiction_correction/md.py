@@ -17,6 +17,7 @@ def read_md_file(file_path):
         lines = [line.strip() for line in file]
     return lines
 
+
 def print_with_red_segments(text, segments):
     # ANSI escape codes for colors
     RED = '\033[91m'
@@ -45,6 +46,14 @@ def print_with_red_segments(text, segments):
     # Print the result
     print(result)
 
+nameList = {"阳大根"}
+
+
+def isInNameList(source,startIndex):
+    for name in nameList:
+        error = source[startIndex:startIndex+len(name)]
+        if error == name:
+            return True
 
 if __name__ == '__main__':
     m = MacBertCorrector()
@@ -53,8 +62,10 @@ if __name__ == '__main__':
     # m.set_custom_confusion_path_or_dict('/Users/xuanchengwei/Desktop/git_clone/pycorrector/examples/kenlm/my_custom_confusion.txt')
     md_file = "/Users/xuanchengwei/my-data/core/H/extraordinary-fiction/娇妻美妾任君尝/霸王花魁传-娇妻美妾任君尝同人/霸王花魁传-娇妻美妾任君尝同人.md"
     lines = read_md_file(md_file)
-
     for l in lines:
         r = m.correct(l)
-        if r['errors']:
-            print_with_red_segments(r['source'],[(c,len(a)) for a, b, c in r['errors']])
+        errors = r['errors']
+        errors = [t for t in errors if not isInNameList(r['source'],t[2])]
+        if errors:
+            print(errors)
+            print_with_red_segments(r['source'], [(c, len(a)) for a, b, c in errors])
