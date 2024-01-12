@@ -51,7 +51,7 @@ if __name__ == '__main__':
     # m = Corrector(custom_confusion_path_or_dict='./my_custom_confusion.txt')
     # m.set_custom_word_freq(path=r'/Users/xuanchengwei/Desktop/git_clone/pycorrector/examples/kenlm/custom_word_freq.txt')
     # m.set_custom_confusion_path_or_dict('/Users/xuanchengwei/Desktop/git_clone/pycorrector/examples/kenlm/my_custom_confusion.txt')
-    md_file = "/Users/xuanchengwei/my-data/core/H/extraordinary-fiction/娇妻美妾任君尝/霸王花魁传-娇妻美妾任君尝同人/霸王花魁传-娇妻美妾任君尝同人.md"
+    md_file = "C:\\core\\H\\extraordinary-fiction\\娇妻美妾任君尝\\娇妻美妾任君尝 第一部\\娇妻美妾任君尝_第一部_名字替换.md"
     lines = read_md_file(md_file)
 
     for l in lines:
