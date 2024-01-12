@@ -67,5 +67,4 @@ if __name__ == '__main__':
         errors = r['errors']
         errors = [t for t in errors if not isInNameList(r['source'],t[2])]
         if errors:
-            print(errors)
             print_with_red_segments(r['source'], [(c, len(a)) for a, b, c in errors])
