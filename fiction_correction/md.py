@@ -43,8 +43,7 @@ def print_with_red_segments(text, segments):
     # Append any remaining part of the string after the last segment
     result += text[last_index:]
 
-    # Print the result
-    print(result)
+    return result
 
 nameList = {"阳大根","昊明","性福"}
 
@@ -67,4 +66,5 @@ if __name__ == '__main__':
         errors = r['errors']
         errors = [t for t in errors if not isInNameList(r['source'],t[2])]
         if errors:
-            print_with_red_segments(r['source'], [(c, len(a)) for a, b, c in errors])
+            error_sentence = print_with_red_segments(r['source'], [(c, len(a)) for a, b, c in errors])
+            print(error_sentence)
