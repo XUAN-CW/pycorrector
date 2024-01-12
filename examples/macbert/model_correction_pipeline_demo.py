@@ -16,13 +16,15 @@ if __name__ == '__main__':
 
     model1 = MacBertCorrector()
     # add confusion corrector for post process
-    confusion_dict = {"杨大根": "阳大根"}
+    confusion_dict = {"阳大根": "阳大根"}
     model2 = ConfusionCorrector(custom_confusion_path_or_dict=confusion_dict)
     for line in error_sentences:
         r1 = model1.correct(line)
         correct_sent = r1['target']
         # print("query:{} => {} err:{}".format(line, correct_sent, r1['errors']))
-        r2 = model2.correct(correct_sent)
-        corrected_sent2 = r2['target']
-        if corrected_sent2 != correct_sent:
-            print("update, query:{} => {} err:{}".format(correct_sent, corrected_sent2, r2['errors']))
+        print(r1)
+        r2 = model2.correct(line)
+        print(r2)
+
+    # if corrected_sent2 != correct_sent:
+        #     print("update, query:{} => {} err:{}".format(correct_sent, corrected_sent2, r2['errors']))
