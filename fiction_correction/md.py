@@ -3,7 +3,7 @@
 @author:XuMing(xuming624@qq.com)
 @description: 
 """
-
+import json
 import sys
 
 from pycorrector.macbert.macbert_corrector import MacBertCorrector
@@ -67,4 +67,5 @@ if __name__ == '__main__':
         errors = [t for t in errors if not isInNameList(r['source'],t[2])]
         if errors:
             error_sentence = print_with_red_segments(r['source'], [(c, len(a)) for a, b, c in errors])
-            print("【{}】 ============> 【{}】___【{}】".format(error_sentence, r['target'],errors))
+            result_json = json.dumps(r, default=lambda obj: obj.__dict__)
+            print(result_json)
