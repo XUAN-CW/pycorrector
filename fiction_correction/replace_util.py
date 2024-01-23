@@ -29,5 +29,6 @@ if __name__ == '__main__':
 
     for need_to_replace_sentence in need_to_replace_sentence_list:
         print(need_to_replace_sentence)
-        data = json.loads(need_to_replace_sentence)
-        replace_in_file(config.md_file,data['source'],data['target'])
+        if(need_to_replace_sentence):
+            data = json.loads(need_to_replace_sentence)
+            replace_in_file(config.md_file,data['source'],data['target'])
