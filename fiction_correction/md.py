@@ -67,5 +67,9 @@ if __name__ == '__main__':
         errors = [t for t in errors if not isInNameList(r['source'],t[2])]
         if errors:
             error_sentence = print_with_red_segments(r['source'], [(c, len(a)) for a, b, c in errors])
-            result_json = json.dumps(r, default=lambda obj: obj.__dict__)
-            print(result_json)
+            # result_json = json.dumps(r, default=lambda obj: obj.__dict__)
+            # print(result_json)
+            # print(r)
+            json_string = json.dumps(r, ensure_ascii=False)
+            print(json_string)
+
