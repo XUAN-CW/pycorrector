@@ -3,7 +3,7 @@
 @author:XuMing(xuming624@qq.com)
 @description: 
 """
-
+import json
 import sys
 
 from pycorrector.macbert.macbert_corrector import MacBertCorrector
@@ -16,6 +16,7 @@ def read_md_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         lines = [line.strip() for line in file]
     return lines
+
 
 def print_with_red_segments(text, segments):
     # ANSI escape codes for colors
@@ -42,9 +43,16 @@ def print_with_red_segments(text, segments):
     # Append any remaining part of the string after the last segment
     result += text[last_index:]
 
-    # Print the result
-    print(result)
+    return result
 
+nameList = {"阳大根","昊明","性福","葵","站街","慢着","筱葵","昊宁妃","昊天","昊明","优盘","昊帝"}
+
+
+def isInNameList(source,startIndex):
+    for name in nameList:
+        error = source[startIndex:startIndex+len(name)]
+        if error == name:
+            return True
 
 if __name__ == '__main__':
     m = MacBertCorrector()
@@ -53,8 +61,15 @@ if __name__ == '__main__':
     # m.set_custom_confusion_path_or_dict('/Users/xuanchengwei/Desktop/git_clone/pycorrector/examples/kenlm/my_custom_confusion.txt')
     md_file = "C:\\core\\H\\extraordinary-fiction\\娇妻美妾任君尝\\娇妻美妾任君尝 第一部\\娇妻美妾任君尝_第一部_名字替换.md"
     lines = read_md_file(md_file)
-
     for l in lines:
         r = m.correct(l)
-        if r['errors']:
-            print_with_red_segments(r['source'],[(c,len(a)) for a, b, c in r['errors']])
+        errors = r['errors']
+        errors = [t for t in errors if not isInNameList(r['source'],t[2])]
+        if errors:
+            error_sentence = print_with_red_segments(r['source'], [(c, len(a)) for a, b, c in errors])
+            # result_json = json.dumps(r, default=lambda obj: obj.__dict__)
+            # print(result_json)
+            # print(r)
+            json_string = json.dumps(r, ensure_ascii=False)
+            print(json_string.replace(r['source'],error_sentence))
+
