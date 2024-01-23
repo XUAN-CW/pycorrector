@@ -45,7 +45,7 @@ def print_with_red_segments(text, segments):
 
     return result
 
-nameList = {"阳大根","昊明","性福","葵","站街","慢着","筱葵","昊宁妃","昊天","昊明","优盘"}
+nameList = {"阳大根","昊明","性福","葵","站街","慢着","筱葵","昊宁妃","昊天","昊明","优盘,昊帝"}
 
 
 def isInNameList(source,startIndex):
