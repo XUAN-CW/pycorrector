@@ -25,7 +25,7 @@ def replace_in_file(file_path, source, target):
 
 
 if __name__ == '__main__':
-    need_to_replace_sentence_list = read_lines("./fix_log/娇妻美妾任君尝_第一部.txt")
+    need_to_replace_sentence_list = read_lines("./fix_log/霸王花魁传-娇妻美妾任君尝同人.txt")
 
     for need_to_replace_sentence in need_to_replace_sentence_list:
         print(need_to_replace_sentence)
