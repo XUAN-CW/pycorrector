@@ -71,5 +71,6 @@ if __name__ == '__main__':
             # print(result_json)
             # print(r)
             json_string = json.dumps(r, ensure_ascii=False)
-            print(json_string.replace(r['source'],error_sentence))
+            print(json_string.replace(r['source'],error_sentence) + "\n")
+
 
